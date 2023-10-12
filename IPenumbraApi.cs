@@ -1,6 +1,8 @@
+using System;
 using Dalamud.Game.ClientState.Objects.Types;
 using Lumina.Data;
 using Penumbra.Api.Enums;
+using Penumbra.Api.Models;
 
 namespace Penumbra.Api;
 
@@ -361,6 +363,8 @@ public interface IPenumbraApi : IPenumbraApiBase
     /// <returns>InvalidArgument if <paramref name="newPath" /> is empty, ModMissing if the mod can not be found,
     /// PathRenameFailed if <paramref name="newPath"/> could not be set or Success.</returns>
     public PenumbraApiEc SetModPath(string modDirectory, string modName, string newPath);
+
+    public (PenumbraApiEc, ModDetails?) GetModDetails(string modDirectory, string modName);
 
     #endregion
 

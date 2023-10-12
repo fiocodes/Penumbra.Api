@@ -1,6 +1,7 @@
 using Dalamud.Plugin;
 using Penumbra.Api.Enums;
 using Penumbra.Api.Helpers;
+using Penumbra.Api.Models;
 
 namespace Penumbra.Api;
 
@@ -129,6 +130,17 @@ public static partial class Ipc
             => new(pi, Label, func);
 
         public static FuncSubscriber<string, string, string, PenumbraApiEc> Subscriber(DalamudPluginInterface pi)
+            => new(pi, Label);
+    }
+
+    public static class GetModDetails
+    {
+        public const string Label = $"Penumbra.{nameof(GetModDetails)}";
+
+        public static FuncProvider<string, string, (PenumbraApiEc, ModDetails?)> Provider(DalamudPluginInterface pi, Func<string, string, (PenumbraApiEc, ModDetails?)> func)
+            => new(pi, Label, func);
+
+        public static FuncSubscriber<string, string, (PenumbraApiEc, ModDetails?)> Subscriber(DalamudPluginInterface pi)
             => new(pi, Label);
     }
 }
